@@ -33,10 +33,11 @@ export function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Image
-                src="/logo.svg"
+                src="/logo.png"
                 alt="Zilson Fiber"
-                width={40}
-                height={12}
+                width={28}
+                height={28}
+                className="block h-7 w-7 object-contain"
               />
               <span className="text-lg font-bold text-text-primary">Zilson</span>
             </div>

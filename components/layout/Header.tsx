@@ -51,11 +51,12 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/logo.svg"
+              src="/logo.png"
               alt="Zilson Fiber"
-              width={50}
-              height={14}
+              width={32}
+              height={32}
               priority
+              className="block h-8 w-8 object-contain"
             />
             <span className="text-xl font-bold text-text-primary">
               Zilson
@@ -175,54 +176,56 @@ export function Header() {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden bg-white border-t border-black/[0.06] overflow-hidden transition-all duration-300 ${
+        className={`lg:hidden bg-white overflow-hidden transition-all duration-300 ${
           mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="container-wide py-6 space-y-4">
-          <div>
-            <p className="type-caption text-carbon-accent mb-2">
-              Carbon Fiber
-            </p>
-            {carbonProducts.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMobile}
-                className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+        <div className="container-wide">
+          <div className="mt-4 border-t border-black/[0.06] py-6 space-y-4">
+            <div>
+              <p className="type-caption text-carbon-accent mb-2">
+                Carbon Fiber
+              </p>
+              {carbonProducts.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobile}
+                  className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div>
+              <p className="type-caption text-glass-accent mb-2">
+                Glass Fiber
+              </p>
+              {glassProducts.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobile}
+                  className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="border-t border-black/[0.06] pt-4 space-y-3">
+              <Link href="/applications" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Applications</Link>
+              <Link href="/services" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Services</Link>
+              <Link href="/blog" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Blog</Link>
+              <Link href="/about" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">About</Link>
+            </div>
+            <Link
+              href="/contact"
+              onClick={closeMobile}
+              className="block w-full text-center px-5 py-3 bg-accent-500 text-white text-sm font-medium rounded-full"
+            >
+              Get Quote
+            </Link>
           </div>
-          <div>
-            <p className="type-caption text-glass-accent mb-2">
-              Glass Fiber
-            </p>
-            {glassProducts.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={closeMobile}
-                className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-          <div className="border-t border-black/[0.06] pt-4 space-y-3">
-            <Link href="/applications" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Applications</Link>
-            <Link href="/services" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Services</Link>
-            <Link href="/blog" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Blog</Link>
-            <Link href="/about" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">About</Link>
-          </div>
-          <Link
-            href="/contact"
-            onClick={closeMobile}
-            className="block w-full text-center px-5 py-3 bg-accent-500 text-white text-sm font-medium rounded-full"
-          >
-            Get Quote
-          </Link>
         </div>
       </div>
     </header>
