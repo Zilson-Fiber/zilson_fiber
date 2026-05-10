@@ -1,12 +1,15 @@
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { allGlassFiberCategories } from "@/data/glass-fiber";
 
-export const metadata: Metadata = {
-  title: "All Glass Fiber Products",
-  description: "Browse our complete range of fiberglass materials including tissue mats, cloth, composite mats, and specialty fibers.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Glass Fiber Product Catalog",
+  description:
+    "Browse fiberglass tissue mats, woven fabrics, stitched mats, chopped strand mats, and specialty glass fiber products.",
+  path: "/glass-fiber/products",
+});
 
 export default function GlassProductsPage() {
   return (

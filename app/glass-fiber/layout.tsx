@@ -1,10 +1,12 @@
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Glass Fiber Products | Reliable Composite Materials",
+export const metadata: Metadata = createPageMetadata({
+  title: "Glass Fiber Materials",
   description:
-    "Explore our glass fiber product line: tissue mats, woven cloth, composite mats, and specialty materials for wind energy, construction, and industrial applications.",
-};
+    "Explore fiberglass tissue mats, woven fabrics, composite mats, and specialty reinforcements for industrial applications.",
+  path: "/glass-fiber",
+});
 
 export default function GlassFiberLayout({
   children,

@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { allCarbonFiberCategories } from "@/data/carbon-fiber";
 import { ProductCard } from "@/components/products/ProductCard";
+import { createPageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ category: string }> };
 
@@ -14,10 +15,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category: slug } = await params;
   const category = allCarbonFiberCategories.find((c) => c.slug === slug);
   if (!category) return {};
-  return {
-    title: `${category.name} | Carbon Fiber Products`,
+  return createPageMetadata({
+    title: `${category.name} Products`,
     description: category.description,
-  };
+    path: `/carbon-fiber/products/${category.slug}`,
+    image: category.image,
+  });
 }
 
 export default async function CarbonCategoryPage({ params }: Props) {
@@ -45,6 +48,7 @@ export default async function CarbonCategoryPage({ params }: Props) {
 
       <section className="pb-24">
         <div className="container-wide">
+          <h2 className="sr-only">Products in this category</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {category.products.map((product) => (
               <ProductCard

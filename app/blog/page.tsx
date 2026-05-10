@@ -1,38 +1,15 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { blogPosts } from "@/data/blog";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog | Fiber Materials Knowledge & Industry News",
+export const metadata: Metadata = createPageMetadata({
+  title: "Fiber Materials Blog",
   description:
-    "Expert articles on carbon fiber, fiberglass, composite materials, and their applications in wind energy, aerospace, construction, and more.",
-};
-
-const posts = [
-  {
-    slug: "carbon-fiber-vs-fiberglass",
-    title: "Carbon Fiber vs Fiberglass: A Complete Comparison Guide",
-    excerpt:
-      "Understanding the key differences in strength, weight, cost, and applications between carbon fiber and fiberglass materials.",
-    date: "2026-04-15",
-    tags: ["comparison", "carbon", "glass"],
-  },
-  {
-    slug: "fiberglass-in-wind-energy",
-    title: "How Fiberglass Reinforcements Power Wind Turbine Blades",
-    excerpt:
-      "An in-depth look at how multiaxial and composite mats are used in modern wind turbine blade manufacturing.",
-    date: "2026-03-28",
-    tags: ["glass", "wind-energy", "application"],
-  },
-  {
-    slug: "understanding-gsm-fiber-materials",
-    title: "Understanding GSM in Fiber Materials: A Buyer's Guide",
-    excerpt:
-      "What does g/m² mean for your application? Learn how to choose the right weight for your composite project.",
-    date: "2026-03-10",
-    tags: ["guide", "carbon", "glass"],
-  },
-];
+    "Read practical guides on carbon fiber, fiberglass, composite material selection, wind energy, construction, and advanced manufacturing applications.",
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (
@@ -55,30 +32,41 @@ export default function BlogPage() {
       <section className="pb-24">
         <div className="container-wide">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {posts.map((post) => (
+            {blogPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
-                <article className="h-full p-6 bg-neutral-50 border border-neutral-100 rounded-lg hover:border-neutral-200 transition-colors cursor-pointer">
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2 py-0.5 bg-white text-neutral-500 border border-neutral-200 rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                <article className="h-full overflow-hidden bg-neutral-50 border border-neutral-100 rounded-xl hover:border-neutral-200 transition-colors cursor-pointer">
+                  <div className="relative h-44 bg-neutral-100 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <h2 className="text-sm font-medium text-neutral-900 group-hover:text-carbon-accent transition-colors leading-snug">
-                    {post.title}
-                  </h2>
-                  <p className="mt-3 text-sm text-neutral-500 line-clamp-3 leading-relaxed">
-                    {post.excerpt}
-                  </p>
-                  <p className="mt-4 font-mono text-xs text-neutral-400">{post.date}</p>
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs px-2 py-0.5 bg-white text-neutral-500 border border-neutral-200 rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h2 className="text-base font-medium text-neutral-900 group-hover:text-carbon-accent transition-colors leading-snug">
+                      {post.title}
+                    </h2>
+                    <p className="mt-3 text-sm text-neutral-500 line-clamp-3 leading-relaxed">
+                      {post.excerpt}
+                    </p>
+                    <p className="mt-4 font-mono text-xs text-neutral-400">{post.date}</p>
+                  </div>
                 </article>
               </Link>
             ))}

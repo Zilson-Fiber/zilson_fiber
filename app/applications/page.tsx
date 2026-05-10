@@ -1,15 +1,14 @@
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import { permanentRedirect } from "next/navigation";
 import { ApplicationsPageContent } from "@/components/applications/ApplicationsPageContent";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "Carbon Fiber Applications",
   description:
-    "Explore carbon fiber application industries including aerospace, automotive, new energy, military defense, and high-end manufacturing.",
-  alternates: {
-    canonical: "/applications",
-  },
-};
+    "Explore carbon fiber application areas including aerospace, defense, new energy, motorsport, and advanced manufacturing.",
+  path: "/applications",
+});
 
 type Props = {
   searchParams?: Promise<{ material?: string }>;

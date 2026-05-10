@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
+import { createPageMetadata } from "@/lib/seo";
 
 const applications: Record<
   string,
@@ -74,10 +75,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const app = applications[slug];
   if (!app) return { title: "Not Found" };
-  return {
-    title: app.metaTitle,
+  return createPageMetadata({
+    title: app.title,
     description: app.metaDescription,
-  };
+    path: `/glass-fiber/applications/${slug}`,
+  });
 }
 
 export default async function GlassApplicationPage({ params }: Props) {

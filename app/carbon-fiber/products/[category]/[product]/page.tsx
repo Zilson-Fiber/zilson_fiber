@@ -4,6 +4,7 @@ import Link from "next/link";
 import { allCarbonFiberCategories } from "@/data/carbon-fiber";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { SpecTable } from "@/components/products/SpecTable";
+import { createPageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ category: string; product: string }> };
 
@@ -21,11 +22,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { category: catSlug, product: prodSlug } = await params;
   const category = allCarbonFiberCategories.find((c) => c.slug === catSlug);
   const product = category?.products.find((p) => p.slug === prodSlug);
-  if (!product) return {};
-  return {
-    title: `${product.name} | Carbon Fiber Manufacturer`,
+  if (!category || !product) return {};
+  return createPageMetadata({
+    title: `${product.name} Carbon Fiber`,
     description: product.description,
-  };
+    path: `/carbon-fiber/products/${category.slug}/${product.slug}`,
+    image: product.images[0],
+  });
 }
 
 export default async function CarbonProductPage({ params }: Props) {
@@ -65,9 +68,9 @@ export default async function CarbonProductPage({ params }: Props) {
                 {product.description}
               </p>
               <div className="mt-6">
-                <h3 className="text-xs font-medium text-neutral-400 uppercase tracking-wider mb-3">
+                <h2 className="text-xs font-medium text-neutral-400 uppercase tracking-wider mb-3">
                   Key Features
-                </h3>
+                </h2>
                 <ul className="space-y-2">
                   {product.features.map((f) => (
                     <li key={f} className="flex items-start gap-2 text-sm text-neutral-600">

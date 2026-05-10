@@ -1,112 +1,14 @@
-"use client";
+import type { Metadata } from "next";
+import CarbonFiberPageContent from "./CarbonFiberPageContent";
+import { createPageMetadata } from "@/lib/seo";
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { allCarbonFiberCategories } from "@/data/carbon-fiber";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.08 },
-  }),
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Carbon Fiber Materials",
+  description:
+    "Browse carbon fiber mats, woven cloth, hybrid cloth, and raw fiber materials for aerospace, motorsport, defense, and energy applications.",
+  path: "/carbon-fiber",
+});
 
 export default function CarbonFiberPage() {
-  return (
-    <>
-      {/* Page Header */}
-      <section className="pt-36 pb-16">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="type-caption text-carbon-accent">
-              Carbon Fiber Division
-            </p>
-            <h1 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mt-3">
-              High-Performance Carbon Fiber Materials
-            </h1>
-            <p className="text-neutral-500 mt-4 max-w-2xl leading-relaxed">
-              Lightweight, ultra-strong carbon fiber solutions for aerospace,
-              motorsport, military defense, and advanced manufacturing industries.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Product Categories */}
-      <section className="pb-24">
-        <div className="container-wide">
-          <p className="type-caption text-neutral-400 mb-8">Product Categories</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {allCarbonFiberCategories.map((category, i) => (
-              <motion.div
-                key={category.slug}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-              >
-                <Link
-                  href={`/carbon-fiber/products/${category.slug}`}
-                  className="group block h-full"
-                >
-                  <div className="h-full bg-white border border-neutral-100 rounded-lg hover:border-neutral-200 overflow-hidden transition-colors cursor-pointer">
-                    <div className="relative h-48 bg-neutral-100 overflow-hidden">
-                      <Image
-                        src={category.image}
-                        alt={category.name}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
-                    <div className="p-5">
-                      <h3 className="text-sm font-medium text-neutral-900 group-hover:text-carbon-accent transition-colors">
-                        {category.name}
-                      </h3>
-                      <p className="mt-2 text-sm text-neutral-500 line-clamp-2 leading-relaxed">
-                        {category.description}
-                      </p>
-                      <span className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-carbon-accent">
-                        View Products{" "}
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
-                      </span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <div className="container-wide"><div className="h-px bg-neutral-100" /></div>
-
-      {/* CTA */}
-      <section className="py-24">
-        <div className="container-wide text-center max-w-xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900">
-            Need a Custom Carbon Fiber Solution?
-          </h2>
-          <p className="text-neutral-500 mt-4 leading-relaxed">
-            Our engineers can recommend the optimal material for your application.
-          </p>
-          <Link
-            href="/contact"
-            className="group inline-flex items-center gap-2 mt-8 px-7 py-3 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold rounded-full transition-colors cursor-pointer"
-          >
-            Get a Quote
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-          </Link>
-        </div>
-      </section>
-    </>
-  );
+  return <CarbonFiberPageContent />;
 }

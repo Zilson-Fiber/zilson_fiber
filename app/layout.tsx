@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
 import { NewTabLinkBehavior } from "@/components/layout/NewTabLinkBehavior";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScroll";
+import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,12 +21,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Zilson Fiber | Engineered Fiber Solutions",
+    default: siteConfig.title,
     template: "%s | Zilson Fiber",
   },
-  description:
-    "Leading manufacturer of carbon fiber and glass fiber materials for aerospace, wind energy, construction, and high-end manufacturing industries.",
+  description: siteConfig.description,
   keywords: [
     "carbon fiber",
     "glass fiber",
@@ -34,10 +35,30 @@ export const metadata: Metadata = {
     "carbon fiber manufacturer",
     "fiberglass supplier",
   ],
+  alternates: {
+    canonical: absoluteUrl("/"),
+  },
   openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: absoluteUrl("/"),
     type: "website",
     locale: "en_US",
     siteName: "Zilson Fiber",
+    images: [
+      {
+        url: absoluteUrl(siteConfig.ogImage),
+        width: 1200,
+        height: 1200,
+        alt: "Zilson Fiber logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    images: [absoluteUrl(siteConfig.ogImage)],
   },
 };
 

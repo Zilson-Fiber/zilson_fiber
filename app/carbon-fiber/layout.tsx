@@ -1,10 +1,12 @@
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Carbon Fiber Products | High-Performance Composite Materials",
+export const metadata: Metadata = createPageMetadata({
+  title: "Carbon Fiber Materials",
   description:
-    "Explore our carbon fiber product line: surface mats, needled mats, woven cloth, and raw materials for aerospace, motorsport, military, and new energy applications.",
-};
+    "Explore carbon fiber mats, cloth, raw fiber, and custom composite reinforcements for demanding industrial applications.",
+  path: "/carbon-fiber",
+});
 
 export default function CarbonFiberLayout({
   children,

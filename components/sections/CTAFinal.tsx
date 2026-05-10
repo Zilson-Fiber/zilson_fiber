@@ -95,7 +95,12 @@ export function CTAFinal() {
         ) : (
           <form onSubmit={handleSubmit} className="mt-12 space-y-4">
             <div data-cta-reveal className="opacity-0">
+              <label htmlFor="quick-inquiry-email" className="sr-only">
+                Email address
+              </label>
               <input
+                id="quick-inquiry-email"
+                name="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -105,7 +110,12 @@ export function CTAFinal() {
               />
             </div>
             <div data-cta-reveal className="opacity-0">
+              <label htmlFor="quick-inquiry-message" className="sr-only">
+                Project requirements
+              </label>
               <textarea
+                id="quick-inquiry-message"
+                name="message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="What are you looking for?"

@@ -1,12 +1,15 @@
 import { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import { allCarbonFiberCategories } from "@/data/carbon-fiber";
 
-export const metadata: Metadata = {
-  title: "All Carbon Fiber Products",
-  description: "Browse our complete range of carbon fiber materials including mats, cloth, and raw materials.",
-};
+export const metadata: Metadata = createPageMetadata({
+  title: "Carbon Fiber Product Catalog",
+  description:
+    "Browse carbon fiber mats, cloth, hybrid reinforcements, yarns, and raw fiber products for composite manufacturing applications.",
+  path: "/carbon-fiber/products",
+});
 
 export default function CarbonProductsPage() {
   return (
