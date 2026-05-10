@@ -37,35 +37,35 @@ export default async function GlassProductPage({ params }: Props) {
 
   return (
     <>
-      <section className="pt-32 pb-6 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-36 pb-4">
+        <div className="container-wide">
           <nav className="flex items-center gap-2 text-sm text-neutral-400">
-            <Link href="/" className="hover:text-neutral-700">Home</Link>
+            <Link href="/" className="hover:text-neutral-700 transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/glass-fiber" className="hover:text-neutral-700">Glass Fiber</Link>
+            <Link href="/glass-fiber" className="hover:text-neutral-700 transition-colors">Glass Fiber</Link>
             <span>/</span>
-            <Link href={`/glass-fiber/products/${category.slug}`} className="hover:text-neutral-700">
+            <Link href={`/glass-fiber/products/${category.slug}`} className="hover:text-neutral-700 transition-colors">
               {category.name}
             </Link>
             <span>/</span>
-            <span className="text-neutral-700">{product.name}</span>
+            <span className="text-neutral-600">{product.name}</span>
           </nav>
         </div>
       </section>
 
-      <section className="py-10 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-10">
+        <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12">
             <ProductGallery images={product.images} name={product.name} />
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold text-neutral-900">
+              <h1 className="text-xl sm:text-2xl font-semibold text-neutral-900">
                 {product.name}
               </h1>
-              <p className="mt-4 text-neutral-600 leading-relaxed">
+              <p className="mt-4 text-neutral-600 leading-relaxed text-sm">
                 {product.description}
               </p>
               <div className="mt-6">
-                <h3 className="text-sm font-semibold text-neutral-700 uppercase tracking-wider mb-3">
+                <h3 className="text-xs font-medium text-neutral-400 uppercase tracking-wider mb-3">
                   Key Features
                 </h3>
                 <ul className="space-y-2">
@@ -80,7 +80,7 @@ export default async function GlassProductPage({ params }: Props) {
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white font-semibold rounded-full transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold rounded-full transition-colors cursor-pointer"
                 >
                   Send Inquiry
                 </Link>
@@ -88,7 +88,7 @@ export default async function GlassProductPage({ params }: Props) {
                   href="https://wa.me/8613800000000"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-neutral-200 hover:border-neutral-300 text-neutral-700 font-semibold rounded-full transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-neutral-200 hover:border-neutral-300 text-neutral-700 text-sm font-semibold rounded-full transition-colors"
                 >
                   WhatsApp
                 </a>
@@ -98,9 +98,11 @@ export default async function GlassProductPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-12 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-neutral-900 mb-6">
+      <div className="container-wide"><div className="h-px bg-neutral-100" /></div>
+
+      <section className="py-12">
+        <div className="container-wide">
+          <h2 className="text-xs font-medium text-neutral-400 uppercase tracking-wider mb-6">
             Specifications
           </h2>
           <div className="max-w-xl">
@@ -109,16 +111,18 @@ export default async function GlassProductPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-neutral-900 mb-6">
+      <div className="container-wide"><div className="h-px bg-neutral-100" /></div>
+
+      <section className="py-12">
+        <div className="container-wide">
+          <h2 className="text-xs font-medium text-neutral-400 uppercase tracking-wider mb-6">
             Applications
           </h2>
           <div className="flex flex-wrap gap-2">
             {product.applications.map((app) => (
               <span
                 key={app}
-                className="px-4 py-2 bg-glass-accent/10 text-neutral-700 text-sm rounded-full"
+                className="px-3 py-1.5 bg-neutral-50 border border-neutral-100 text-neutral-600 text-sm rounded-full"
               >
                 {app}
               </span>

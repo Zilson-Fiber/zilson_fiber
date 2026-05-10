@@ -1,11 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const carbonProducts = [
   { name: "Carbon Fiber Mat", href: "/carbon-fiber/products/carbon-fiber-mat" },
@@ -34,17 +33,20 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const showSolidBg = !isHome || scrolled;
+  const closeMobile = useCallback(() => setMobileOpen(false), []);
+
+  const showSolidBg = scrolled;
+  const isDarkPage = isHome;
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b ${
         showSolidBg
-          ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
-          : "bg-transparent py-5"
+          ? "bg-white/80 backdrop-blur-xl border-black/[0.06] py-3 shadow-sm"
+          : "bg-transparent border-transparent py-5"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container-wide">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -55,65 +57,54 @@ export function Header() {
               height={14}
               priority
             />
-            <span className={`text-xl font-bold ${showSolidBg ? "text-neutral-900" : "text-white"}`}>
+            <span className="text-xl font-bold text-text-primary">
               Zilson
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
-            {/* Home */}
-            <Link
-              href="/"
-              className="text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-            >
-              Home
-            </Link>
+            <NavLink href="/">Home</NavLink>
+
             {/* Carbon Fiber Dropdown */}
             <div
               className="relative"
               onMouseEnter={() => setActiveDropdown("carbon")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <Link
-                href="/carbon-fiber"
-                className="flex items-center gap-1 text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-              >
+              <NavLink href="/carbon-fiber" hasDropdown>
                 Carbon Fiber
-                <ChevronDown className="w-4 h-4" />
-              </Link>
-              <AnimatePresence>
-                {activeDropdown === "carbon" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-neutral-100 p-4"
+              </NavLink>
+              <div
+                className={`absolute top-full left-0 pt-4 w-64 transition-all duration-200 ${
+                  activeDropdown === "carbon"
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
+                    : "opacity-0 translate-y-2 pointer-events-none"
+                }`}
+              >
+                <div className="bg-white border border-black/[0.06] p-4 shadow-lg rounded-lg">
+                <p className="type-caption text-carbon-accent mb-3">
+                  Carbon Fiber Products
+                </p>
+                {carbonProducts.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-3 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-black/[0.03] transition-colors"
                   >
-                    <p className="text-xs font-semibold text-carbon-accent uppercase tracking-wider mb-3">
-                      Carbon Fiber Products
-                    </p>
-                    {carbonProducts.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-brand-600 rounded-lg transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                    <div className="border-t border-neutral-100 mt-3 pt-3">
-                      <Link
-                        href="/carbon-fiber/products"
-                        className="text-sm font-medium text-brand-600 hover:text-brand-700"
-                      >
-                        View All →
-                      </Link>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="border-t border-black/[0.06] mt-3 pt-3">
+                  <Link
+                    href="/carbon-fiber/products"
+                    className="text-sm font-medium text-carbon-accent hover:text-text-primary transition-colors"
+                  >
+                    View All →
+                  </Link>
+                </div>
+                </div>
+              </div>
             </div>
 
             {/* Glass Fiber Dropdown */}
@@ -122,84 +113,58 @@ export function Header() {
               onMouseEnter={() => setActiveDropdown("glass")}
               onMouseLeave={() => setActiveDropdown(null)}
             >
-              <Link
-                href="/glass-fiber"
-                className="flex items-center gap-1 text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-              >
+              <NavLink href="/glass-fiber" hasDropdown>
                 Glass Fiber
-                <ChevronDown className="w-4 h-4" />
-              </Link>
-              <AnimatePresence>
-                {activeDropdown === "glass" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-neutral-100 p-4"
+              </NavLink>
+              <div
+                className={`absolute top-full left-0 pt-4 w-64 transition-all duration-200 ${
+                  activeDropdown === "glass"
+                    ? "opacity-100 translate-y-0 pointer-events-auto"
+                    : "opacity-0 translate-y-2 pointer-events-none"
+                }`}
+              >
+                <div className="bg-white border border-black/[0.06] p-4 shadow-lg rounded-lg">
+                <p className="type-caption text-glass-accent mb-3">
+                  Glass Fiber Products
+                </p>
+                {glassProducts.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="block px-3 py-2 text-sm text-text-secondary hover:text-text-primary hover:bg-black/[0.03] transition-colors"
                   >
-                    <p className="text-xs font-semibold text-glass-accent uppercase tracking-wider mb-3">
-                      Glass Fiber Products
-                    </p>
-                    {glassProducts.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="block px-3 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-brand-600 rounded-lg transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                    <div className="border-t border-neutral-100 mt-3 pt-3">
-                      <Link
-                        href="/glass-fiber/products"
-                        className="text-sm font-medium text-brand-600 hover:text-brand-700"
-                      >
-                        View All →
-                      </Link>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                    {item.name}
+                  </Link>
+                ))}
+                <div className="border-t border-black/[0.06] mt-3 pt-3">
+                  <Link
+                    href="/glass-fiber/products"
+                    className="text-sm font-medium text-glass-accent hover:text-text-primary transition-colors"
+                  >
+                    View All →
+                  </Link>
+                </div>
+                </div>
+              </div>
             </div>
 
-            <Link
-              href="/services"
-              className="text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-            >
-              Services
-            </Link>
-            <Link
-              href="/blog"
-              className="text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-            >
-              Blog
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-neutral-700 hover:text-brand-600 transition-colors"
-            >
-              Contact
-            </Link>
+            <NavLink href="/applications">Applications</NavLink>
+            <NavLink href="/services">Services</NavLink>
+            <NavLink href="/blog">Blog</NavLink>
+            <NavLink href="/about">About</NavLink>
           </nav>
 
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 bg-accent-500 hover:bg-accent-600 text-white text-sm font-semibold rounded-full transition-colors"
+              className="hidden sm:inline-flex items-center px-5 py-2 bg-accent-500 hover:bg-accent-600 text-white text-sm font-medium rounded-full transition-all hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]"
             >
               Get Quote
             </Link>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-neutral-700"
+              className="lg:hidden p-2 text-text-primary"
               aria-label="Toggle menu"
             >
               {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -209,62 +174,77 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-white border-t border-neutral-100 overflow-hidden"
-          >
-            <div className="max-w-7xl mx-auto px-4 py-6 space-y-4">
-              <div>
-                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                  Carbon Fiber
-                </p>
-                {carbonProducts.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-sm text-neutral-700"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <div>
-                <p className="text-xs font-semibold text-neutral-400 uppercase tracking-wider mb-2">
-                  Glass Fiber
-                </p>
-                {glassProducts.map((item) => (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="block py-2 text-sm text-neutral-700"
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-              </div>
-              <div className="border-t border-neutral-100 pt-4 space-y-3">
-                <Link href="/services" onClick={() => setMobileOpen(false)} className="block text-sm font-medium text-neutral-700">Services</Link>
-                <Link href="/blog" onClick={() => setMobileOpen(false)} className="block text-sm font-medium text-neutral-700">Blog</Link>
-                <Link href="/about" onClick={() => setMobileOpen(false)} className="block text-sm font-medium text-neutral-700">About</Link>
-                <Link href="/contact" onClick={() => setMobileOpen(false)} className="block text-sm font-medium text-neutral-700">Contact</Link>
-              </div>
+      <div
+        className={`lg:hidden bg-white border-t border-black/[0.06] overflow-hidden transition-all duration-300 ${
+          mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="container-wide py-6 space-y-4">
+          <div>
+            <p className="type-caption text-carbon-accent mb-2">
+              Carbon Fiber
+            </p>
+            {carbonProducts.map((item) => (
               <Link
-                href="/contact"
-                onClick={() => setMobileOpen(false)}
-                className="block w-full text-center px-5 py-3 bg-accent-500 text-white text-sm font-semibold rounded-full"
+                key={item.href}
+                href={item.href}
+                onClick={closeMobile}
+                className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
               >
-                Get Quote
+                {item.name}
               </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+          </div>
+          <div>
+            <p className="type-caption text-glass-accent mb-2">
+              Glass Fiber
+            </p>
+            {glassProducts.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMobile}
+                className="block py-2 text-sm text-text-secondary hover:text-text-primary transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+          <div className="border-t border-black/[0.06] pt-4 space-y-3">
+            <Link href="/applications" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Applications</Link>
+            <Link href="/services" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Services</Link>
+            <Link href="/blog" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">Blog</Link>
+            <Link href="/about" onClick={closeMobile} className="block text-sm font-medium text-text-secondary hover:text-text-primary">About</Link>
+          </div>
+          <Link
+            href="/contact"
+            onClick={closeMobile}
+            className="block w-full text-center px-5 py-3 bg-accent-500 text-white text-sm font-medium rounded-full"
+          >
+            Get Quote
+          </Link>
+        </div>
+      </div>
     </header>
+  );
+}
+
+function NavLink({
+  href,
+  children,
+  hasDropdown = false,
+}: {
+  href: string;
+  children: React.ReactNode;
+  hasDropdown?: boolean;
+}) {
+  return (
+    <Link
+      href={href}
+      className="flex items-center gap-1 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors duration-200"
+    >
+      {children}
+      {hasDropdown && <ChevronDown className="w-3.5 h-3.5" />}
+    </Link>
   );
 }

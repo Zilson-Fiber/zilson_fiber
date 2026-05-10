@@ -11,33 +11,33 @@ export const metadata: Metadata = {
 export default function CarbonProductsPage() {
   return (
     <>
-      <section className="pt-32 pb-12 bg-gradient-to-b from-neutral-900 to-neutral-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="pt-36 pb-16">
+        <div className="container-wide">
           <nav className="flex items-center gap-2 text-sm text-neutral-400 mb-6">
-            <Link href="/" className="hover:text-white">Home</Link>
+            <Link href="/" className="hover:text-neutral-700 transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/carbon-fiber" className="hover:text-white">Carbon Fiber</Link>
+            <Link href="/carbon-fiber" className="hover:text-neutral-700 transition-colors">Carbon Fiber</Link>
             <span>/</span>
-            <span className="text-white">All Products</span>
+            <span className="text-neutral-600">All Products</span>
           </nav>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900">
             Carbon Fiber Products
           </h1>
-          <p className="mt-3 text-neutral-400 max-w-2xl">
+          <p className="text-neutral-500 mt-3 max-w-2xl leading-relaxed">
             High-performance carbon fiber materials for aerospace, motorsport, military, and advanced manufacturing.
           </p>
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="pb-24">
+        <div className="container-wide space-y-16">
           {allCarbonFiberCategories.map((category) => (
             <div key={category.slug}>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-neutral-900">{category.name}</h2>
+                <h2 className="text-sm font-medium text-neutral-900">{category.name}</h2>
                 <Link
                   href={`/carbon-fiber/products/${category.slug}`}
-                  className="text-sm font-medium text-carbon-accent hover:underline"
+                  className="text-xs font-medium text-carbon-accent hover:text-neutral-900 transition-colors"
                 >
                   View All →
                 </Link>
@@ -47,18 +47,18 @@ export default function CarbonProductsPage() {
                   <Link
                     key={product.slug}
                     href={`/carbon-fiber/products/${category.slug}/${product.slug}`}
-                    className="group block bg-white rounded-xl overflow-hidden border border-neutral-100 hover:shadow-md transition-all"
+                    className="group block bg-white border border-neutral-100 rounded-lg hover:border-neutral-200 overflow-hidden transition-colors cursor-pointer"
                   >
-                    <div className="relative h-36 bg-neutral-100">
+                    <div className="relative h-36 bg-neutral-100 overflow-hidden">
                       <Image
                         src={product.images[0]}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-neutral-900 group-hover:text-carbon-accent transition-colors line-clamp-1">
+                      <h3 className="text-sm font-medium text-neutral-900 group-hover:text-carbon-accent transition-colors line-clamp-1">
                         {product.name}
                       </h3>
                       <p className="mt-1 text-xs text-neutral-500 line-clamp-1">

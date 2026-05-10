@@ -12,7 +12,7 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
   const containerRef = useRef<HTMLDivElement>(null);
 
   const zoomFactor = 3;
-  const lensSize = 50; // percentage of container
+  const lensSize = 50;
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!zoomEnabled || !containerRef.current) return;
@@ -30,7 +30,7 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
       >
         <div
           ref={containerRef}
-          className={`relative aspect-square rounded-2xl overflow-hidden bg-neutral-100 ${
+          className={`relative aspect-square overflow-hidden rounded-lg bg-neutral-100 ${
             zoomEnabled ? "cursor-crosshair" : "cursor-default"
           }`}
           onMouseMove={handleMouseMove}
@@ -54,10 +54,9 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
             </motion.div>
           </AnimatePresence>
 
-          {/* Lens indicator box - using transform for GPU acceleration */}
           {zoomEnabled && (
             <div
-              className="absolute border-2 border-brand-600/70 bg-brand-600/10 pointer-events-none will-change-transform"
+              className="absolute border-2 border-carbon-accent/70 bg-carbon-accent/10 pointer-events-none will-change-transform"
               style={{
                 width: `${lensSize / zoomFactor}%`,
                 height: `${lensSize / zoomFactor}%`,
@@ -69,22 +68,20 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
           )}
         </div>
 
-        {/* Zoom toggle button */}
         <button
           onClick={() => setZoomEnabled(!zoomEnabled)}
-          className={`absolute top-3 right-3 z-20 p-2.5 rounded-full shadow-md transition-colors ${
+          className={`absolute top-3 right-3 z-20 p-2.5 rounded-full shadow-sm transition-colors ${
             zoomEnabled
-              ? "bg-brand-600 text-white"
-              : "bg-white/90 text-neutral-700 hover:bg-white"
+              ? "bg-carbon-accent text-white"
+              : "bg-white/90 text-neutral-600 hover:bg-white"
           }`}
           aria-label={zoomEnabled ? "Disable zoom" : "Enable zoom"}
         >
           {zoomEnabled ? <ZoomOut className="w-5 h-5" /> : <ZoomIn className="w-5 h-5" />}
         </button>
 
-        {/* Zoomed preview panel */}
         {zoomEnabled && (
-          <div className="absolute top-0 left-[calc(100%+16px)] w-72 h-72 rounded-xl overflow-hidden border-2 border-brand-600/30 shadow-lg bg-neutral-100 hidden lg:block">
+          <div className="absolute top-0 left-[calc(100%+16px)] w-72 h-72 rounded-lg overflow-hidden border border-neutral-200 shadow-lg bg-neutral-100 hidden lg:block">
             <div
               className="w-full h-full"
               style={{
@@ -107,8 +104,8 @@ export function ProductGallery({ images, name }: { images: string[]; name: strin
             <button
               key={i}
               onClick={() => setActiveIndex(i)}
-              className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-colors ${
-                i === activeIndex ? "border-brand-600" : "border-transparent"
+              className={`relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-colors cursor-pointer ${
+                i === activeIndex ? "border-carbon-accent" : "border-neutral-200"
               }`}
             >
               <Image

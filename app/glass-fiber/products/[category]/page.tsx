@@ -27,27 +27,25 @@ export default async function GlassCategoryPage({ params }: Props) {
 
   return (
     <>
-      <section className="pt-32 pb-12 bg-gradient-to-b from-brand-700 to-brand-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-sm text-brand-200 mb-6">
-            <Link href="/" className="hover:text-white">Home</Link>
+      <section className="pt-36 pb-16">
+        <div className="container-wide">
+          <nav className="flex items-center gap-2 text-sm text-neutral-400 mb-6">
+            <Link href="/" className="hover:text-neutral-700 transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/glass-fiber" className="hover:text-white">Glass Fiber</Link>
+            <Link href="/glass-fiber" className="hover:text-neutral-700 transition-colors">Glass Fiber</Link>
             <span>/</span>
-            <span className="text-white">{category.name}</span>
+            <span className="text-neutral-600">{category.name}</span>
           </nav>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900">
             {category.name}
           </h1>
-          <p className="mt-3 text-brand-200 max-w-2xl">
-            {category.description}
-          </p>
+          <p className="text-neutral-500 mt-3 max-w-2xl leading-relaxed">{category.description}</p>
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="pb-24">
+        <div className="container-wide">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {category.products.map((product) => (
               <ProductCard
                 key={product.slug}

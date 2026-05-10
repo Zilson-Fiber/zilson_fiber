@@ -37,42 +37,48 @@ const posts = [
 export default function BlogPage() {
   return (
     <>
-      <section className="pt-32 pb-12 bg-gradient-to-b from-brand-700 to-brand-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">Blog</h1>
-          <p className="mt-3 text-brand-200">
-            Industry insights, product knowledge, and technical guides.
+      {/* Page Header */}
+      <section className="pt-36 pb-16">
+        <div className="container-wide">
+          <p className="type-caption text-neutral-400">Blog</p>
+          <h1 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mt-3">
+            Insights & Guides
+          </h1>
+          <p className="text-neutral-500 mt-4 max-w-xl leading-relaxed">
+            Industry insights, product knowledge, and technical guides for
+            composite material professionals.
           </p>
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Posts Grid */}
+      <section className="pb-24">
+        <div className="container-wide">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 className="group block"
               >
-                <article className="h-full bg-white rounded-2xl p-6 border border-neutral-100 hover:shadow-lg transition-all">
-                  <div className="flex flex-wrap gap-1.5 mb-3">
+                <article className="h-full p-6 bg-neutral-50 border border-neutral-100 rounded-lg hover:border-neutral-200 transition-colors cursor-pointer">
+                  <div className="flex flex-wrap gap-1.5 mb-4">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-2 py-0.5 bg-brand-600/10 text-brand-600 rounded-full"
+                        className="text-xs px-2 py-0.5 bg-white text-neutral-500 border border-neutral-200 rounded-full"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <h2 className="text-lg font-semibold text-neutral-900 group-hover:text-brand-600 transition-colors">
+                  <h2 className="text-sm font-medium text-neutral-900 group-hover:text-carbon-accent transition-colors leading-snug">
                     {post.title}
                   </h2>
-                  <p className="mt-2 text-sm text-neutral-500 line-clamp-3">
+                  <p className="mt-3 text-sm text-neutral-500 line-clamp-3 leading-relaxed">
                     {post.excerpt}
                   </p>
-                  <p className="mt-4 text-xs text-neutral-400">{post.date}</p>
+                  <p className="mt-4 font-mono text-xs text-neutral-400">{post.date}</p>
                 </article>
               </Link>
             ))}

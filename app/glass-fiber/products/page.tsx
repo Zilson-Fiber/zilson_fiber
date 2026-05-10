@@ -11,33 +11,33 @@ export const metadata: Metadata = {
 export default function GlassProductsPage() {
   return (
     <>
-      <section className="pt-32 pb-12 bg-gradient-to-b from-brand-700 to-brand-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-sm text-brand-200 mb-6">
-            <Link href="/" className="hover:text-white">Home</Link>
+      <section className="pt-36 pb-16">
+        <div className="container-wide">
+          <nav className="flex items-center gap-2 text-sm text-neutral-400 mb-6">
+            <Link href="/" className="hover:text-neutral-700 transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/glass-fiber" className="hover:text-white">Glass Fiber</Link>
+            <Link href="/glass-fiber" className="hover:text-neutral-700 transition-colors">Glass Fiber</Link>
             <span>/</span>
-            <span className="text-white">All Products</span>
+            <span className="text-neutral-600">All Products</span>
           </nav>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white">
+          <h1 className="text-2xl sm:text-3xl font-semibold text-neutral-900">
             Glass Fiber Products
           </h1>
-          <p className="mt-3 text-brand-200 max-w-2xl">
+          <p className="text-neutral-500 mt-3 max-w-2xl leading-relaxed">
             Reliable fiberglass materials for wind energy, construction, transportation, and industrial applications.
           </p>
         </div>
       </section>
 
-      <section className="py-16 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="pb-24">
+        <div className="container-wide space-y-16">
           {allGlassFiberCategories.map((category) => (
             <div key={category.slug}>
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-neutral-900">{category.name}</h2>
+                <h2 className="text-sm font-medium text-neutral-900">{category.name}</h2>
                 <Link
                   href={`/glass-fiber/products/${category.slug}`}
-                  className="text-sm font-medium text-glass-accent hover:underline"
+                  className="text-xs font-medium text-glass-accent hover:text-neutral-900 transition-colors"
                 >
                   View All →
                 </Link>
@@ -47,18 +47,18 @@ export default function GlassProductsPage() {
                   <Link
                     key={product.slug}
                     href={`/glass-fiber/products/${category.slug}/${product.slug}`}
-                    className="group block bg-white rounded-xl overflow-hidden border border-neutral-100 hover:shadow-md transition-all"
+                    className="group block bg-white border border-neutral-100 rounded-lg hover:border-neutral-200 overflow-hidden transition-colors cursor-pointer"
                   >
-                    <div className="relative h-36 bg-neutral-100">
+                    <div className="relative h-36 bg-neutral-100 overflow-hidden">
                       <Image
                         src={product.images[0]}
                         alt={product.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="text-sm font-semibold text-neutral-900 group-hover:text-glass-accent transition-colors line-clamp-1">
+                      <h3 className="text-sm font-medium text-neutral-900 group-hover:text-glass-accent transition-colors line-clamp-1">
                         {product.name}
                       </h3>
                       <p className="mt-1 text-xs text-neutral-500 line-clamp-1">

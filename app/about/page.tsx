@@ -16,69 +16,82 @@ const values = [
   {
     icon: Factory,
     title: "Manufacturing Excellence",
-    description: "State-of-the-art production lines with strict quality control at every stage.",
+    description:
+      "State-of-the-art production lines with strict quality control at every stage.",
+    iconColor: "text-carbon-accent",
   },
   {
     icon: Globe,
     title: "Global Reach",
-    description: "Serving customers in 50+ countries across 6 continents with reliable logistics.",
+    description:
+      "Serving customers in 50+ countries across 6 continents with reliable logistics.",
+    iconColor: "text-glass-accent",
   },
   {
     icon: Award,
     title: "Quality Certified",
-    description: "ISO 9001 certified with SGS testing reports for all product lines.",
+    description:
+      "ISO 9001 certified with SGS testing reports for all product lines.",
+    iconColor: "text-accent-500",
   },
   {
     icon: Users,
     title: "Customer First",
-    description: "Dedicated technical support team providing custom solutions for every project.",
+    description:
+      "Dedicated technical support team providing custom solutions for every project.",
+    iconColor: "text-carbon-accent",
   },
 ];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.08 },
+  }),
+};
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="pt-32 pb-16 bg-gradient-to-b from-brand-700 to-brand-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Page Header */}
+      <section className="pt-36 pb-16">
+        <div className="container-wide">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center"
+            transition={{ duration: 0.5 }}
           >
-            <h1 className="text-3xl sm:text-4xl font-bold text-white">
-              About Zilson Fiber
+            <p className="type-caption text-neutral-400">About Us</p>
+            <h1 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mt-3">
+              Composite Materials Expert Since 2008
             </h1>
-            <p className="mt-4 text-lg text-brand-200 max-w-2xl mx-auto">
-              A leading composite materials manufacturer specializing in carbon
-              fiber and glass fiber products for global industries.
+            <p className="text-neutral-500 mt-4 max-w-2xl leading-relaxed">
+              A professional manufacturer of fiberglass and carbon fiber composite
+              materials based in Changzhou, Jiangsu Province, China — serving
+              global industries for over 15 years.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Company Intro */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
+      {/* Company Story */}
+      <section className="pb-24">
+        <div className="container-wide">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
-              <h2 className="text-2xl sm:text-3xl font-bold text-neutral-900">
-                Composite Materials Expert Since 2008
-              </h2>
-              <p className="mt-6 text-neutral-600 leading-relaxed">
-                Zilson Fiber is a professional manufacturer of fiberglass and
-                carbon fiber composite materials based in Changzhou, Jiangsu
-                Province, China. With over 15 years of experience, we serve
-                customers across wind energy, aerospace, construction,
-                automotive, military, and new energy sectors worldwide.
+              <p className="text-lg text-neutral-700 leading-relaxed">
+                Zilson Fiber serves customers across wind energy, aerospace,
+                construction, automotive, military, and new energy sectors
+                worldwide.
               </p>
-              <p className="mt-4 text-neutral-600 leading-relaxed">
+              <p className="text-neutral-500 leading-relaxed mt-5">
                 Our product portfolio spans from ultra-thin 10g/m² carbon fiber
                 surface mats to heavy-duty 1200g/m² multiaxial composite
                 reinforcements. We offer full customization of weight, width,
@@ -86,33 +99,69 @@ export default function AboutPage() {
                 manufacturing process.
               </p>
             </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {[
+                { num: "15+", label: "Years Experience" },
+                { num: "50+", label: "Export Countries" },
+                { num: "7", label: "Product Lines" },
+                { num: "100%", label: "Custom Support" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="p-5 bg-neutral-50 border border-neutral-100 rounded-lg"
+                >
+                  <span className="text-2xl font-light text-neutral-900">
+                    {stat.num}
+                  </span>
+                  <p className="text-xs uppercase tracking-wider text-neutral-400 mt-2">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
+      <div className="container-wide"><div className="h-px bg-neutral-100" /></div>
+
       {/* Values */}
-      <section className="py-20 bg-neutral-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-neutral-900 text-center mb-12">
-            Why Choose Us
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-24">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="type-caption text-neutral-400">Why Choose Us</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900 mt-3">
+              Built on Trust & Precision
+            </h2>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
             {values.map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                custom={i}
+                initial="hidden"
+                whileInView="visible"
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-white rounded-2xl p-6 border border-neutral-100"
+                variants={fadeUp}
+                className="p-6 bg-neutral-50 border border-neutral-100 rounded-lg hover:border-neutral-200 transition-colors"
               >
-                <div className="w-12 h-12 rounded-xl bg-brand-600/10 flex items-center justify-center">
-                  <item.icon className="w-6 h-6 text-brand-600" />
-                </div>
-                <h3 className="mt-4 font-semibold text-neutral-900">
+                <item.icon className={`w-5 h-5 ${item.iconColor}`} />
+                <h3 className="text-neutral-900 font-medium mt-4 text-sm">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm text-neutral-500">
+                <p className="text-neutral-500 mt-2 text-sm leading-relaxed">
                   {item.description}
                 </p>
               </motion.div>
@@ -121,38 +170,45 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <div className="container-wide"><div className="h-px bg-neutral-100" /></div>
+
       {/* Timeline */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-neutral-900 text-center mb-12">
-            Our Journey
-          </h2>
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-8">
-              {milestones.map((item, i) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="flex items-start gap-6"
-                >
-                  <div className="flex-shrink-0 w-16 text-right">
-                    <span className="text-lg font-bold text-brand-600">
-                      {item.year}
-                    </span>
-                  </div>
-                  <div className="relative flex-shrink-0">
-                    <div className="w-3 h-3 rounded-full bg-brand-600 mt-2" />
-                    {i < milestones.length - 1 && (
-                      <div className="absolute top-5 left-1/2 -translate-x-1/2 w-0.5 h-12 bg-neutral-200" />
-                    )}
-                  </div>
-                  <p className="text-neutral-700 pt-0.5">{item.event}</p>
-                </motion.div>
-              ))}
-            </div>
+      <section className="py-24">
+        <div className="container-wide">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="type-caption text-neutral-400">Our Journey</p>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-neutral-900 mt-3">
+              Milestones
+            </h2>
+          </motion.div>
+
+          <div className="mt-12 max-w-xl">
+            {milestones.map((item, i) => (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.08 }}
+                className="flex items-start gap-6 pb-8 last:pb-0 relative"
+              >
+                {i < milestones.length - 1 && (
+                  <div className="absolute left-[2.35rem] top-7 bottom-0 w-px bg-neutral-100" />
+                )}
+                <span className="font-mono text-xs text-carbon-accent w-10 pt-0.5 flex-shrink-0 text-right">
+                  {item.year}
+                </span>
+                <div className="mt-2 flex-shrink-0">
+                  <div className="w-2 h-2 rounded-full bg-gradient-to-br from-carbon-accent to-glass-accent" />
+                </div>
+                <p className="text-neutral-600 text-sm pt-0.5">{item.event}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
