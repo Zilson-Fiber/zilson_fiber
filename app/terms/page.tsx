@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { createPageMetadata } from "@/lib/seo";
+import { primaryEmail } from "@/lib/contact";
 
 export const metadata: Metadata = createPageMetadata({
   title: "Terms of Service",
@@ -38,8 +39,8 @@ export default function TermsPage() {
           <h2 className="text-lg font-semibold text-neutral-900">Contact</h2>
           <p>
             For questions about these terms, contact us at
-            <a className="ml-1 text-carbon-accent hover:text-neutral-900" href="mailto:info@zilsonfiber.com">
-              info@zilsonfiber.com
+            <a className="ml-1 text-carbon-accent hover:text-neutral-900" href={`mailto:${primaryEmail}`}>
+              {primaryEmail}
             </a>
             .
           </p>

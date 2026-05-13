@@ -4,6 +4,7 @@ import Link from "next/link";
 import { allGlassFiberCategories } from "@/data/glass-fiber";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { SpecTable } from "@/components/products/SpecTable";
+import { whatsappPhone } from "@/lib/contact";
 import { createPageMetadata } from "@/lib/seo";
 
 type Props = { params: Promise<{ category: string; product: string }> };
@@ -88,7 +89,7 @@ export default async function GlassProductPage({ params }: Props) {
                   Send Inquiry
                 </Link>
                 <a
-                  href="https://wa.me/8613800000000"
+                  href={`https://wa.me/${whatsappPhone}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 border border-neutral-200 hover:border-neutral-300 text-neutral-700 text-sm font-semibold rounded-full transition-colors"

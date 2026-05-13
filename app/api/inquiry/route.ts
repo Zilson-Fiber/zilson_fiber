@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { primaryEmail } from "@/lib/contact";
 
 export async function POST(request: NextRequest) {
   try {
@@ -41,7 +42,7 @@ export async function POST(request: NextRequest) {
 
     // If Resend is configured, send notification email
     const resendKey = process.env.RESEND_API_KEY;
-    const notifyEmail = process.env.NOTIFY_EMAIL || "info@zilsonfiber.com";
+    const notifyEmail = process.env.NOTIFY_EMAIL || primaryEmail;
 
     if (resendKey) {
       await fetch("https://api.resend.com/emails", {
@@ -51,7 +52,7 @@ export async function POST(request: NextRequest) {
           Authorization: `Bearer ${resendKey}`,
         },
         body: JSON.stringify({
-          from: "Zilson Fiber <noreply@zilsonfiber.com>",
+          from: `Zilson Fiber <${primaryEmail}>`,
           to: [notifyEmail],
           subject: `New Inquiry from ${name} - ${division || "General"}`,
           html: `

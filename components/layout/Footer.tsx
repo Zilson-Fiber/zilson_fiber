@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { contactInfo } from "@/lib/contact";
 
 const footerLinks = {
   carbonFiber: [
@@ -118,12 +119,17 @@ export function Footer() {
             </ul>
             <div className="mt-6">
               <p className="type-caption mb-1">Email</p>
-              <a
-                href="mailto:info@zilsonfiber.com"
-                className="text-sm text-text-secondary hover:text-text-primary transition-colors"
-              >
-                info@zilsonfiber.com
-              </a>
+              <div className="space-y-1">
+                {contactInfo.emails.map((email) => (
+                  <a
+                    key={email}
+                    href={`mailto:${email}`}
+                    className="block text-sm text-text-secondary hover:text-text-primary transition-colors"
+                  >
+                    {email}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

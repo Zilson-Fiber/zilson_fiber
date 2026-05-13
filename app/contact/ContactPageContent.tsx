@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, MessageCircle, Mail, MapPin } from "lucide-react";
+import { contactInfo, whatsappPhone } from "@/lib/contact";
 
 export default function ContactPageContent() {
   const [formData, setFormData] = useState({
@@ -258,27 +259,44 @@ export default function ContactPageContent() {
                   Contact Info
                 </h2>
                 <div className="space-y-4">
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-neutral-400">Company</p>
+                    <p className="text-sm text-neutral-700 mt-1">
+                      {contactInfo.company}
+                    </p>
+                  </div>
                   <div className="flex items-start gap-3">
                     <Mail className="w-4 h-4 text-carbon-accent mt-0.5" />
                     <div>
                       <p className="text-xs uppercase tracking-wider text-neutral-400">Email</p>
-                      <a
-                        href="mailto:info@zilsonfiber.com"
-                        className="text-sm text-neutral-700 hover:text-neutral-900 transition-colors"
-                      >
-                        info@zilsonfiber.com
-                      </a>
+                      <div className="space-y-1">
+                        {contactInfo.emails.map((email) => (
+                          <a
+                            key={email}
+                            href={`mailto:${email}`}
+                            className="block text-sm text-neutral-700 hover:text-neutral-900 transition-colors"
+                          >
+                            {email}
+                          </a>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <MessageCircle className="w-4 h-4 text-[#25D366] mt-0.5" />
                     <div>
-                      <p className="text-xs uppercase tracking-wider text-neutral-400">WhatsApp</p>
+                      <p className="text-xs uppercase tracking-wider text-neutral-400">Phone</p>
                       <a
-                        href="https://wa.me/8613800000000"
+                        href={`https://wa.me/${whatsappPhone}`}
                         className="text-sm text-neutral-700 hover:text-neutral-900 transition-colors"
                       >
-                        +86 138 0000 0000
+                        {contactInfo.phones[1]}
+                      </a>
+                      <a
+                        href={`tel:${contactInfo.phones[0]}`}
+                        className="block text-sm text-neutral-700 hover:text-neutral-900 transition-colors mt-1"
+                      >
+                        {contactInfo.phones[0]}
                       </a>
                     </div>
                   </div>
@@ -287,7 +305,7 @@ export default function ContactPageContent() {
                     <div>
                       <p className="text-xs uppercase tracking-wider text-neutral-400">Address</p>
                       <p className="text-sm text-neutral-700">
-                        Changzhou, Jiangsu, China
+                        {contactInfo.address}
                       </p>
                     </div>
                   </div>

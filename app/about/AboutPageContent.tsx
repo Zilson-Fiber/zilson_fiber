@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Award, Factory, Globe, Users } from "lucide-react";
+import { contactInfo } from "@/lib/contact";
 
 const milestones = [
-  { year: "2008", event: "Company founded in Changzhou, Jiangsu" },
+  { year: "2008", event: "Company founded in Nantong, Jiangsu" },
   { year: "2012", event: "Expanded into carbon fiber product line" },
   { year: "2015", event: "Achieved ISO 9001 certification" },
   { year: "2018", event: "Began exporting to 30+ countries" },
@@ -67,11 +68,11 @@ export default function AboutPageContent() {
             <h1 className="text-3xl sm:text-4xl font-semibold text-neutral-900 mt-3">
               Composite Materials Expert Since 2008
             </h1>
-            <p className="text-neutral-500 mt-4 max-w-2xl leading-relaxed">
-              A professional manufacturer of fiberglass and carbon fiber composite
-              materials based in Changzhou, Jiangsu Province, China — serving
-              global industries for over 15 years.
-            </p>
+	            <p className="text-neutral-500 mt-4 max-w-2xl leading-relaxed">
+	              {contactInfo.company} is a professional manufacturer of fiberglass
+	              and carbon fiber composite materials based in Nantong, Jiangsu
+	              Province, China, serving global industries for over 15 years.
+	            </p>
           </motion.div>
         </div>
       </section>
