@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const siteConfig = {
-  name: "Zilson Fiber",
+  name: "ZeYuSen Fiber",
   url: siteUrl,
-  title: "Zilson Fiber | Engineered Fiber Solutions",
+  title: "ZeYuSen Fiber | Engineered Fiber Solutions",
   description:
     "Carbon fiber and glass fiber composite materials for aerospace, wind energy, construction, transportation, and advanced manufacturing applications.",
   ogImage: "/logo.png",

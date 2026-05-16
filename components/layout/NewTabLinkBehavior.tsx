@@ -7,13 +7,19 @@ const SKIPPED_PROTOCOLS = new Set(["mailto:", "tel:", "javascript:", "blob:", "d
 function shouldOpenInNewTab(anchor: HTMLAnchorElement) {
   const rawHref = anchor.getAttribute("href");
 
-  if (!rawHref || rawHref.trim() === "" || rawHref.startsWith("#")) {
+  // Skip empty, anchor-only, or relative (internal) links
+  if (!rawHref || rawHref.trim() === "" || rawHref.startsWith("#") || rawHref.startsWith("/")) {
     return false;
   }
 
   try {
     const url = new URL(anchor.href, window.location.href);
-    return !SKIPPED_PROTOCOLS.has(url.protocol);
+
+    // Skip non-http protocols
+    if (SKIPPED_PROTOCOLS.has(url.protocol)) return false;
+
+    // Only open in new tab if it's an external link (different origin)
+    return url.origin !== window.location.origin;
   } catch {
     return false;
   }

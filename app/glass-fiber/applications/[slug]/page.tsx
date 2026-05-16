@@ -19,7 +19,7 @@ const applications: Record<
 > = {
   "wind-energy": {
     title: "Wind Energy",
-    metaTitle: "Fiberglass for Wind Energy & Turbine Blades | Zilson Fiber",
+    metaTitle: "Fiberglass for Wind Energy & Turbine Blades | ZeYuSen Fiber",
     metaDescription:
       "High-performance fiberglass reinforcements for wind turbine blades, nacelle covers, and structural components.",
     headline: "Reinforcing Renewable Power",
@@ -42,7 +42,7 @@ const applications: Record<
   },
   construction: {
     title: "Construction",
-    metaTitle: "Fiberglass for Construction & Building Materials | Zilson Fiber",
+    metaTitle: "Fiberglass for Construction & Building Materials | ZeYuSen Fiber",
     metaDescription:
       "Durable fiberglass materials for roofing, waterproofing, insulation, and structural reinforcement in construction.",
     headline: "Building Stronger Foundations",

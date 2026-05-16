@@ -19,7 +19,7 @@ const applications: Record<
 > = {
   aerospace: {
     title: "Aerospace & Aviation",
-    metaTitle: "Carbon Fiber for Aerospace & Aviation | Zilson Fiber",
+    metaTitle: "Carbon Fiber for Aerospace & Aviation | ZeYuSen Fiber",
     metaDescription:
       "High-performance carbon fiber composites for aerospace structural components, interior panels, and lightweight aviation solutions.",
     headline: "Engineered for the Skies",
@@ -42,7 +42,7 @@ const applications: Record<
   },
   "military-defense": {
     title: "Military & Defense",
-    metaTitle: "Carbon Fiber for Military & Defense Applications | Zilson Fiber",
+    metaTitle: "Carbon Fiber for Military & Defense Applications | ZeYuSen Fiber",
     metaDescription:
       "Specialized carbon fiber materials for EMI shielding, ballistic protection, and stealth applications.",
     headline: "Protection Through Innovation",
@@ -65,7 +65,7 @@ const applications: Record<
   },
   "new-energy": {
     title: "New Energy",
-    metaTitle: "Carbon Fiber for Fuel Cells & Energy Storage | Zilson Fiber",
+    metaTitle: "Carbon Fiber for Fuel Cells & Energy Storage | ZeYuSen Fiber",
     metaDescription:
       "Advanced carbon fiber materials for hydrogen fuel cell GDL, battery separators, and energy storage systems.",
     headline: "Powering Tomorrow's Energy",

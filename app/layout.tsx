@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: siteConfig.title,
-    template: "%s | Zilson Fiber",
+    template: "%s | ZeYuSen Fiber",
   },
   description: siteConfig.description,
   keywords: [
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     url: absoluteUrl("/"),
     type: "website",
     locale: "en_US",
-    siteName: "Zilson Fiber",
+    siteName: "ZeYuSen Fiber",
     images: [
       {
         url: absoluteUrl(siteConfig.ogImage),
         width: 1200,
         height: 1200,
-        alt: "Zilson Fiber logo",
+        alt: "ZeYuSen Fiber logo",
       },
     ],
   },

@@ -88,7 +88,7 @@ export default function AboutPageContent() {
               transition={{ duration: 0.5 }}
             >
               <p className="text-lg text-neutral-700 leading-relaxed">
-                Zilson Fiber serves customers across wind energy, aerospace,
+                ZeYuSen Fiber serves customers across wind energy, aerospace,
                 construction, automotive, military, and new energy sectors
                 worldwide.
               </p>

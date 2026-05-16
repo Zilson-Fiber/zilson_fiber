@@ -1,5 +1,5 @@
 export const contactInfo = {
-  company: "Jiangsu Zeyusen Carbon Fiber Technology Co., Ltd.",
+  company: "JIANGSU ZEYUSEN CARBON FIBER TECHNOLOGY CO. LTD.",
   emails: ["zys@jsfiberglass.com", "au4682@qq.com"],
   phones: ["+86-0513-81813680", "+86-18012885770"],
   address:

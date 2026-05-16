@@ -5,7 +5,7 @@ import { primaryEmail } from "@/lib/contact";
 export const metadata: Metadata = createPageMetadata({
   title: "Terms of Service",
   description:
-    "Review the terms for using the Zilson Fiber website, requesting product information, and communicating with our team.",
+    "Review the terms for using the ZeYuSen Fiber website, requesting product information, and communicating with our team.",
   path: "/terms",
 });
 
@@ -19,7 +19,7 @@ export default function TermsPage() {
         </h1>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-neutral-600">
           <p>
-            This website provides general information about Zilson Fiber products,
+            This website provides general information about ZeYuSen Fiber products,
             applications, and services. By using the website, you agree to use the
             content for lawful business and informational purposes.
           </p>

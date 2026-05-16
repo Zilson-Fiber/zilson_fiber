@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 const carbonProducts = [
@@ -24,8 +23,6 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const pathname = usePathname();
-  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -36,7 +33,6 @@ export function Header() {
   const closeMobile = useCallback(() => setMobileOpen(false), []);
 
   const showSolidBg = scrolled;
-  const isDarkPage = isHome;
 
   return (
     <header
@@ -52,14 +48,14 @@ export function Header() {
           <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.png"
-              alt="Zilson Fiber"
+              alt="ZeYuSen Fiber"
               width={32}
               height={32}
               priority
               className="block h-8 w-8 object-contain"
             />
             <span className="text-xl font-bold text-text-primary">
-              Zilson
+              ZeYuSen
             </span>
           </Link>
 

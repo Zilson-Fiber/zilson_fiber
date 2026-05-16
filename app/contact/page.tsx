@@ -3,9 +3,9 @@ import ContactPageContent from "./ContactPageContent";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Contact Zilson Fiber",
+  title: "Contact ZeYuSen Fiber",
   description:
-    "Contact Zilson Fiber for carbon fiber and glass fiber product inquiries, samples, technical support, and custom composite material solutions.",
+    "Contact ZeYuSen Fiber for carbon fiber and glass fiber product inquiries, samples, technical support, and custom composite material solutions.",
   path: "/contact",
 });
 

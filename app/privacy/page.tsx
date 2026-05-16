@@ -5,7 +5,7 @@ import { primaryEmail } from "@/lib/contact";
 export const metadata: Metadata = createPageMetadata({
   title: "Privacy Policy",
   description:
-    "Read how Zilson Fiber handles inquiry information, contact details, and business communication data submitted through this website.",
+    "Read how ZeYuSen Fiber handles inquiry information, contact details, and business communication data submitted through this website.",
   path: "/privacy",
 });
 
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         </h1>
         <div className="mt-8 space-y-6 text-sm leading-relaxed text-neutral-600">
           <p>
-            Zilson Fiber collects only the information needed to respond to product
+            ZeYuSen Fiber collects only the information needed to respond to product
             inquiries, quotation requests, technical questions, and business
             communication submitted through this website.
           </p>

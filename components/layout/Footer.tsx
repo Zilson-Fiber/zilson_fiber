@@ -35,12 +35,12 @@ export function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <Image
                 src="/logo.png"
-                alt="Zilson Fiber"
+                alt="ZeYuSen Fiber"
                 width={28}
                 height={28}
                 className="block h-7 w-7 object-contain"
               />
-              <span className="text-lg font-bold text-text-primary">Zilson</span>
+              <span className="text-lg font-bold text-text-primary">ZeYuSen</span>
             </div>
             <p className="text-sm text-text-muted leading-relaxed">
               Leading manufacturer of carbon fiber and glass fiber composite
@@ -137,7 +137,7 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-black/[0.06] mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-text-muted">
-            &copy; {new Date().getFullYear()} Zilson Fiber. All rights reserved.
+            &copy; {new Date().getFullYear()} ZeYuSen Fiber. All rights reserved.
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="text-xs text-text-muted hover:text-text-secondary transition-colors">

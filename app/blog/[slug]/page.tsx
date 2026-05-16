@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!post) {
     return createPageMetadata({
       title: "Article Not Found",
-      description: "The requested Zilson Fiber article could not be found.",
+      description: "The requested ZeYuSen Fiber article could not be found.",
       path: `/blog/${slug}`,
     });
   }
@@ -224,10 +224,10 @@ export default async function BlogArticlePage({ params }: Props) {
         <div className="mt-12 rounded-2xl border border-neutral-100 bg-neutral-50 p-6">
           <h2 className="text-lg font-semibold text-neutral-900">Need help choosing a material?</h2>
           <p className="mt-3 text-sm leading-relaxed text-neutral-600">
-            Send your target application, process, and required specifications. Zilson Fiber can help compare carbon fiber and glass fiber material options for your project.
+            Send your target application, process, and required specifications. ZeYuSen Fiber can help compare carbon fiber and glass fiber material options for your project.
           </p>
           <Link href="/contact" className="inline-flex mt-5 rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white hover:bg-accent-600 transition-colors">
-            Contact Zilson Fiber
+            Contact ZeYuSen Fiber
           </Link>
         </div>
       </div>

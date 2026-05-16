@@ -100,4 +100,4 @@ Chopped strand mat is often easier to form around curves and corners. Heavy wove
 
 ## Next Step
 
-Review [fiberglass product categories](/glass-fiber/products) or [contact Zilson Fiber](/contact) with your target GSM, process, and application.
+Review [fiberglass product categories](/glass-fiber/products) or [contact ZeYuSen Fiber](/contact) with your target GSM, process, and application.

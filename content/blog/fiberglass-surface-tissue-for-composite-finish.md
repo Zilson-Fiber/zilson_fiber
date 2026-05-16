@@ -93,4 +93,4 @@ Often it can support a smoother surface under or near finishing layers, but the 
 
 ## Next Step
 
-Compare [glass fiber products](/glass-fiber/products) or [contact Zilson Fiber](/contact) with your target surface finish and resin system.
+Compare [glass fiber products](/glass-fiber/products) or [contact ZeYuSen Fiber](/contact) with your target surface finish and resin system.
