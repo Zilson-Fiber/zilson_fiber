@@ -3,6 +3,7 @@ import { DivisionsSplit } from "@/components/sections/DivisionsSplit";
 import { StatsBar } from "@/components/sections/StatsBar";
 import { IndustriesGrid } from "@/components/sections/IndustriesGrid";
 import { WhyPartnerNew } from "@/components/sections/WhyPartnerNew";
+import { TrustEvidence } from "@/components/sections/TrustEvidence";
 import { CTAFinal } from "@/components/sections/CTAFinal";
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
       <StatsBar />
       <IndustriesGrid />
       <WhyPartnerNew />
+      <TrustEvidence />
       <CTAFinal />
     </>
   );

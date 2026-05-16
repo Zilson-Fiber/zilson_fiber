@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="ISO 14001 certificate placeholder">
+  <rect width="1200" height="900" fill="#f8fafc"/>
+  <rect x="70" y="70" width="1060" height="760" rx="24" fill="#ffffff" stroke="#e2e8f0" stroke-width="6"/>
+  <rect x="110" y="110" width="240" height="70" rx="18" fill="#065f46"/>
+  <text x="150" y="156" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#ffffff">ISO</text>
+  <text x="390" y="156" font-family="Arial, sans-serif" font-size="28" fill="#334155">Environmental Management</text>
+  <rect x="110" y="220" width="580" height="24" rx="12" fill="#e2e8f0"/>
+  <rect x="110" y="262" width="460" height="18" rx="9" fill="#e2e8f0"/>
+  <rect x="110" y="300" width="520" height="18" rx="9" fill="#e2e8f0"/>
+  <rect x="110" y="338" width="390" height="18" rx="9" fill="#e2e8f0"/>
+  <circle cx="930" cy="340" r="120" fill="#d1fae5"/>
+  <circle cx="930" cy="340" r="84" fill="none" stroke="#059669" stroke-width="14"/>
+  <path d="M930 282c34 20 52 48 52 84 0 47-35 84-84 84s-84-37-84-84c0-36 18-64 52-84" fill="none" stroke="#059669" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="110" y="560" font-family="Arial, sans-serif" font-size="26" fill="#475569">Certificate scan placeholder</text>
+  <text x="110" y="610" font-family="Arial, sans-serif" font-size="18" fill="#94a3b8">Replace with the final scanned document when available.</text>
+  <rect x="110" y="690" width="280" height="76" rx="18" fill="#f1f5f9" stroke="#cbd5e1"/>
+  <text x="148" y="738" font-family="Arial, sans-serif" font-size="22" font-weight="700" fill="#0f172a">ZeYuSen Fiber</text>
+</svg>

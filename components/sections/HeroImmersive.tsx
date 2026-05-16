@@ -22,32 +22,74 @@ export function HeroImmersive() {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Desktop: mouse-follow mask
+  // Desktop: mouse-follow mask with smooth lerp + feathered gradient
   useEffect(() => {
     if (isMobile) return;
     const container = imageContainerRef.current;
     const glassLayer = glassLayerRef.current;
     if (!container || !glassLayer) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let isInside = false;
+    let rafId = 0;
+
+    const buildMask = (x: number, y: number) =>
+      `radial-gradient(circle 240px at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,0.94) 20%, rgba(0,0,0,0.7) 45%, rgba(0,0,0,0.32) 70%, rgba(0,0,0,0.08) 88%, transparent 100%)`;
+
+    const tick = () => {
+      currentX += (targetX - currentX) * 0.18;
+      currentY += (targetY - currentY) * 0.18;
+      const mask = buildMask(currentX, currentY);
+      glassLayer.style.maskImage = mask;
+      glassLayer.style.webkitMaskImage = mask;
+      rafId = requestAnimationFrame(tick);
+    };
+
+    const handleMouseEnter = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      glassLayer.style.maskImage = `radial-gradient(circle 160px at ${x}px ${y}px, black 0%, black 50%, transparent 100%)`;
-      glassLayer.style.webkitMaskImage = `radial-gradient(circle 160px at ${x}px ${y}px, black 0%, black 50%, transparent 100%)`;
+      targetX = x;
+      targetY = y;
+      if (!isInside) {
+        currentX = x;
+        currentY = y;
+        isInside = true;
+      }
+      const mask = buildMask(currentX, currentY);
+      glassLayer.style.maskImage = mask;
+      glassLayer.style.webkitMaskImage = mask;
       glassLayer.style.opacity = "1";
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
     };
 
     const handleMouseLeave = () => {
       glassLayer.style.opacity = "0";
+      isInside = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
     };
 
+    container.addEventListener("mouseenter", handleMouseEnter);
     container.addEventListener("mousemove", handleMouseMove);
     container.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
+      container.removeEventListener("mouseenter", handleMouseEnter);
       container.removeEventListener("mousemove", handleMouseMove);
       container.removeEventListener("mouseleave", handleMouseLeave);
+      if (rafId) cancelAnimationFrame(rafId);
     };
   }, [isMobile]);
 

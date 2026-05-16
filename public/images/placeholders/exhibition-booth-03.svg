@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-label="Exhibition booth placeholder 3">
+  <rect width="1200" height="720" fill="#0b1120"/>
+  <rect x="80" y="80" width="1040" height="560" rx="28" fill="#101827" stroke="#1f2937" stroke-width="4"/>
+  <rect x="120" y="120" width="260" height="64" rx="16" fill="#ecfeff"/>
+  <rect x="120" y="210" width="470" height="20" rx="10" fill="#334155"/>
+  <rect x="120" y="248" width="400" height="20" rx="10" fill="#334155"/>
+  <rect x="120" y="304" width="510" height="210" rx="22" fill="#1f2937"/>
+  <rect x="680" y="150" width="400" height="360" rx="26" fill="#172554" opacity="0.85"/>
+  <rect x="715" y="185" width="180" height="44" rx="12" fill="#ffffff"/>
+  <rect x="715" y="250" width="300" height="20" rx="10" fill="#bfdbfe"/>
+  <rect x="715" y="290" width="250" height="20" rx="10" fill="#bfdbfe"/>
+  <rect x="715" y="340" width="220" height="94" rx="18" fill="#0f172a" stroke="#60a5fa" stroke-width="2"/>
+  <text x="120" y="570" font-family="Arial, sans-serif" font-size="28" font-weight="700" fill="#ffffff">Exhibition image placeholder</text>
+  <text x="120" y="610" font-family="Arial, sans-serif" font-size="18" fill="#cbd5e1">Swap in the final event photo later.</text>
+</svg>
